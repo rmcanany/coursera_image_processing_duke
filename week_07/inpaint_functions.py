@@ -56,7 +56,7 @@ def plot_1xc(imgs_list, titles_list, save_file=None, fs=7):
     cols = len(imgs_list)
 
     if cols == 1: 
-        plot_1x1(imgs_list, titles_list, save_file=None)
+        plot_1x1(imgs_list, titles_list, save_file=None, fs=fs)
     else:
         i = 0
 
@@ -77,7 +77,7 @@ def plot_rxc(imgs_list, titles_list, ncol=3, save_file=None, fs=7):
     cols = ncol
     rows = np.ceil(len(imgs_list)/cols).astype(int)
     if rows==1:
-        plot_1xc(imgs_list, titles_list, save_file)
+        plot_1xc(imgs_list, titles_list, save_file, fs=fs)
     else:
         i = 0
     
@@ -96,11 +96,11 @@ def plot_rxc(imgs_list, titles_list, ncol=3, save_file=None, fs=7):
             filename = time.strftime("%Y%m%d_%H%M") + "_" + save_file + ".png"
             fig.savefig(filename, bbox_inches='tight')
             
-def plot_quivers(vecs_list, titles_list, scales_list, save_file=None):
+def plot_quivers(vecs_list, titles_list, scales_list, save_file=None, fs=7):
     
     cols = len(vecs_list)
 
-    fig, axes = plt.subplots(nrows=1, ncols=cols, figsize=(15,15))
+    fig, axes = plt.subplots(nrows=1, ncols=cols, figsize=(fs,fs))
     
     for c in range(cols):
         x = np.linspace(0, vecs_list[c][0].shape[1], vecs_list[c][0].shape[1]).astype(np.int)
