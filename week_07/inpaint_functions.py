@@ -32,10 +32,10 @@ def get_timestamp():
 
 # Plotting functions
 
-def plot_1x1(imgs_list, titles_list, save_file=None):
+def plot_1x1(imgs_list, titles_list, save_file=None, fs=7):
     cols = len(imgs_list)
     
-    fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(15,15))
+    fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(fs,fs))
     
     i = 0
     
@@ -52,7 +52,7 @@ def plot_1x1(imgs_list, titles_list, save_file=None):
         fig.savefig(filename, bbox_inches='tight')
     
 
-def plot_1xc(imgs_list, titles_list, save_file=None):
+def plot_1xc(imgs_list, titles_list, save_file=None, fs=7):
     cols = len(imgs_list)
 
     if cols == 1: 
@@ -60,7 +60,7 @@ def plot_1xc(imgs_list, titles_list, save_file=None):
     else:
         i = 0
 
-        fig, axes = plt.subplots(nrows=1, ncols=cols, figsize=(15,15))
+        fig, axes = plt.subplots(nrows=1, ncols=cols, figsize=(fs,fs))
         for c in range(cols):
             axes[c].imshow(imgs_list[i], cmap="gray", interpolation="nearest")
             axes[c].set_title(titles_list[i], size=20)
@@ -73,7 +73,7 @@ def plot_1xc(imgs_list, titles_list, save_file=None):
             filename = time.strftime("%Y%m%d_%H%M") + "_" + save_file + ".png"
             fig.savefig(filename, bbox_inches='tight')
         
-def plot_rxc(imgs_list, titles_list, ncol=3, save_file=None):
+def plot_rxc(imgs_list, titles_list, ncol=3, save_file=None, fs=7):
     cols = ncol
     rows = np.ceil(len(imgs_list)/cols).astype(int)
     if rows==1:
@@ -81,7 +81,7 @@ def plot_rxc(imgs_list, titles_list, ncol=3, save_file=None):
     else:
         i = 0
     
-        fig, axes = plt.subplots(nrows=rows, ncols=cols, figsize=(15,15*rows/cols))
+        fig, axes = plt.subplots(nrows=rows, ncols=cols, figsize=(fs,fs*rows/cols))
         for r in range(rows):
             for c in range(cols):
                 if i < len(imgs_list):
